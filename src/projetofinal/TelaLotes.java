@@ -27,6 +27,70 @@ public class TelaLotes extends JPanel {
     JScrollPane sp = new JScrollPane();
     private int i = 0;
     int n = 1;
+
+    public JLabel getProduto() {
+        return produto;
+    }
+
+    public void setProduto(JLabel produto) {
+        this.produto = produto;
+    }
+
+    public JLabel getLanceMinimo() {
+        return lanceMinimo;
+    }
+
+    public void setLanceMinimo(JLabel lanceMinimo) {
+        this.lanceMinimo = lanceMinimo;
+    }
+
+    public JLabel getLanceAtual() {
+        return lanceAtual;
+    }
+
+    public void setLanceAtual(String lanceAtual) {
+        this.lanceAtual.setText(lanceAtual);
+    }
+
+    public JLabel getQntLances() {
+        return qntLances;
+    }
+
+    public void setQntLances(JLabel qntLances) {
+        this.qntLances = qntLances;
+    }
+
+    public JLabel getStatus() {
+        return status;
+    }
+
+    public void setStatus(JLabel status) {
+        this.status = status;
+    }
+
+    public ArrayList<JButton> getBotao() {
+        return botao;
+    }
+
+    public void setBotao(ArrayList<JButton> botao) {
+        this.botao = botao;
+    }
+
+    public JScrollPane getSp() {
+        return sp;
+    }
+
+    public void setSp(JScrollPane sp) {
+        this.sp = sp;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
     
     public int getI(){
         return i;
@@ -51,7 +115,7 @@ public class TelaLotes extends JPanel {
             
             temp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                LanceTela tela = new LanceTela();
+                LanceTela tela = new LanceTela(leilao,TelaLotes.this);
                 int i = getI()-1;
                 
                 tela.setLote("Lote: " + String.format("%03d", getI()));
@@ -104,7 +168,7 @@ public class TelaLotes extends JPanel {
     }
 
     public void display(ArrayList<Leilao> leilao) {
-        JFrame f = new JFrame("GroupPanel");
+        JFrame f = new JFrame("Leilão IFTM");
         JPanel panel = new JPanel();
         JScrollPane scrollPane = new JScrollPane(panel);
         f.setSize(300, 300);
@@ -120,5 +184,6 @@ public class TelaLotes extends JPanel {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-
+    
+    
 }

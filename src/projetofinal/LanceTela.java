@@ -7,6 +7,7 @@ package projetofinal;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -15,10 +16,14 @@ import javax.swing.JTextField;
  */
 public class LanceTela extends javax.swing.JFrame {
 
+    Leilao leilao;
+    TelaLotes telaLotes;
     /**
      * Creates new form LanceTela
      */
-    public LanceTela() {
+    public LanceTela(Leilao leilao, TelaLotes telaLotes) {
+        this.telaLotes = telaLotes;
+        this.leilao = leilao;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -218,6 +223,22 @@ public class LanceTela extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        if(Double.parseDouble(jTextField1.getText()) > leilao.getValorMinimo())
+        {
+        Object[] options = { "Sim", "Não" }; 
+        String oferta = "Deseja relamente ofertar " + jTextField1.getText() + " de lance?";
+          int opcao = JOptionPane.showOptionDialog(null, oferta, "De novo?",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]); 
+          
+          if(opcao == 0){
+              JOptionPane.showMessageDialog(null, "Lance ofertado.");
+              leilao.RegistrarLance(jTextField2.getText(), Double.parseDouble(jTextField1.getText()));
+              telaLotes.setLanceAtual("Lance atual: " + jTextField1.getText());
+          }
+        }
+        else
+            JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o minimo.");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -227,42 +248,13 @@ public class LanceTela extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LanceTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LanceTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LanceTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LanceTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LanceTela().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
