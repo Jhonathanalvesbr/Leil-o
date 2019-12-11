@@ -181,7 +181,7 @@ public class LanceTela extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2});
@@ -224,10 +224,10 @@ public class LanceTela extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        if(Double.parseDouble(jTextField1.getText()) > leilao.getValorMinimo())
+        if(Double.parseDouble(jTextField1.getText()) > leilao.getLanceMinimo())
         {
         Object[] options = { "Sim", "Não" }; 
-        String oferta = "Deseja relamente ofertar " + jTextField1.getText() + " de lance?";
+        String oferta = "Deseja relamente ofertar " + leilao.format(Double.parseDouble(jTextField1.getText())) + " de lance?";
           int opcao = JOptionPane.showOptionDialog(null, oferta, "De novo?",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]); 
           
           if(opcao == 0){

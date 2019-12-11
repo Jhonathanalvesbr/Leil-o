@@ -1,13 +1,20 @@
 package projetofinal;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Leilao {
     private String nomeProduto;
-    private double valorMinimo;
+    private double lanceMinimo;
     private ArrayList<Lance> lance;
     private boolean statusAberto;
     private Lance ganhadorLance;
+    private NumberFormat formatar = new DecimalFormat("#,##0.00");     
+
+    public String format(double formatar){
+        return this.formatar.format(formatar);
+    }   
     
     public String getNomeProduto() {
         return nomeProduto;
@@ -17,12 +24,12 @@ public class Leilao {
         this.nomeProduto = nomeProduto;
     }
 
-    public double getValorMinimo() {
-        return valorMinimo;
+    public double getLanceMinimo() {
+        return lanceMinimo;
     }
 
-    public void setValorMinimo(double valorMinimo) {
-        this.valorMinimo = valorMinimo;
+    public void setLanceMinimo(double lanceMinimo) {
+        this.lanceMinimo = lanceMinimo;
     }
 
     public ArrayList<Lance> getLance() {
@@ -51,14 +58,14 @@ public class Leilao {
     
     public Leilao(String nomeProduto, double valorMinimo, boolean statusAberto){
         this.nomeProduto = nomeProduto;
-        this.valorMinimo = valorMinimo;
+        this.lanceMinimo = valorMinimo;
         this.statusAberto = statusAberto;
         if(statusAberto = true)
             lance = new ArrayList<>();
     }
     
     public void RegistrarLance(String nomeCliente, double valorLance){
-        if(valorLance > valorMinimo)
+        if(valorLance > lanceMinimo)
             lance.add(new Lance(nomeCliente, valorLance));
     }
     
