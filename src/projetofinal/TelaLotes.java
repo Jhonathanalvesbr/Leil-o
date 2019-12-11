@@ -153,7 +153,7 @@ public class TelaLotes extends JPanel {
             lblStatus = new JLabel("Status: Aberto.");
         } else {
             lblStatus = new JLabel("Status: Fechado.");
-            //botao.setEnabled(false);
+            botao.setEnabled(false);
         }
 
         botao.addActionListener(new ActionListener() {
@@ -204,9 +204,7 @@ public class TelaLotes extends JPanel {
                 )
         );
 
-        sp.setToolTipText("test");
-        sp.add(this);
-
+        
     }
 
     public void display(ArrayList<Leilao> leilao) {

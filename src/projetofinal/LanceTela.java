@@ -223,21 +223,24 @@ public class LanceTela extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        if(Double.parseDouble(jTextField1.getText()) > leilao.getLanceMinimo())
+        if(jTextField2.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Digite seu nome!");
+        }
+        else if(Double.parseDouble(jTextField1.getText()) > leilao.getLanceMinimo())
         {
         Object[] options = { "Sim", "Não" }; 
         String oferta = "Deseja relamente ofertar " + leilao.format(Double.parseDouble(jTextField1.getText())) + " de lance?";
           int opcao = JOptionPane.showOptionDialog(null, oferta, "De novo?",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]); 
           
           if(opcao == 0){
-              JOptionPane.showMessageDialog(null, "Lance ofertado.");
+              JOptionPane.showMessageDialog(null, "Lance ofertado!");
               leilao.RegistrarLance(jTextField2.getText(), Double.parseDouble(jTextField1.getText()));
               telaLotes.setLanceAtual("Lance atual: " + jTextField1.getText());
           }
         }
         else
-            JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o minimo.");
+            JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o lance minimo.");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
