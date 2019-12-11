@@ -236,7 +236,7 @@ public class LanceTela extends javax.swing.JFrame {
           if(opcao == 0){
               JOptionPane.showMessageDialog(null, "Lance ofertado!");
               leilao.RegistrarLance(jTextField2.getText(), Double.parseDouble(jTextField1.getText()));
-              telaLotes.setLanceAtual("Lance atual: " + jTextField1.getText());
+              telaLotes.setLanceAtual("Lance atual: " + leilao.format(Double.parseDouble(jTextField1.getText())));
           }
         }
         else
