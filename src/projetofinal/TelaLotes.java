@@ -18,54 +18,54 @@ public class TelaLotes extends JPanel {
     public TelaLotes() {
     }
 
-    private JLabel produto;
-    private JLabel lanceMinimo;
-    private JLabel lanceAtual;
-    private JLabel qntLances;
-    private JLabel status;
+    private JLabel txtProduto;
+    private JLabel txtLanceMinimo;
+    private JLabel txtLanceAtual;
+    private JLabel txtQuantidadeLances;
+    private JLabel txtStatus;
     private ArrayList<JButton> botao = new ArrayList();
     JScrollPane sp = new JScrollPane();
     private int i = 0;
     int n = 1;
 
-    public JLabel getProduto() {
-        return produto;
+    public JLabel getTxtProduto() {
+        return txtProduto;
     }
 
-    public void setProduto(JLabel produto) {
-        this.produto = produto;
+    public void setTxtProduto(JLabel txtProduto) {
+        this.txtProduto = txtProduto;
     }
 
-    public JLabel getLanceMinimo() {
-        return lanceMinimo;
+    public JLabel getTxtLanceMinimo() {
+        return txtLanceMinimo;
     }
 
-    public void setLanceMinimo(JLabel lanceMinimo) {
-        this.lanceMinimo = lanceMinimo;
+    public void setTxtLanceMinimo(JLabel txtLanceMinimo) {
+        this.txtLanceMinimo = txtLanceMinimo;
     }
 
-    public JLabel getLanceAtual() {
-        return lanceAtual;
+    public JLabel getTxtLanceAtual() {
+        return txtLanceAtual;
     }
 
     public void setLanceAtual(String lanceAtual) {
-        this.lanceAtual.setText(lanceAtual);
+        this.txtLanceAtual.setText(lanceAtual);
     }
 
-    public JLabel getQntLances() {
-        return qntLances;
+    public JLabel getTxtQuantidadeLances() {
+        return txtQuantidadeLances;
     }
 
-    public void setQntLances(JLabel qntLances) {
-        this.qntLances = qntLances;
+    public void setTxtQuantidadeLances(JLabel txtQuantidadeLances) {
+        this.txtQuantidadeLances = txtQuantidadeLances;
     }
 
-    public JLabel getStatus() {
-        return status;
+    public JLabel getTxtStatus() {
+        return txtStatus;
     }
 
-    public void setStatus(JLabel status) {
-        this.status = status;
+    public void setTxtStatus(JLabel txtStatus) {
+        this.txtStatus = txtStatus;
     }
 
     public ArrayList<JButton> getBotao() {
@@ -102,14 +102,14 @@ public class TelaLotes extends JPanel {
             JButton temp = new JButton("Entrar ");
             
             botao.add(temp);
-            produto = new JLabel("Produto: " + leilao.getNomeProduto() + ".");
-            lanceMinimo = new JLabel("Lance minimo: R$: " + leilao.getValorMinimo() + ".");
-            lanceAtual = new JLabel("Lance atual: R$: " + leilao.getLanceAtual() + ".");
-            qntLances = new JLabel("Quantidade lances: " + leilao.getQntLances() + ".");
+            txtProduto = new JLabel("Produto: " + leilao.getNomeProduto() + ".");
+            txtLanceMinimo = new JLabel("Lance minimo: R$: " + leilao.getValorMinimo() + ".");
+            txtLanceAtual = new JLabel("Lance atual: R$: " + leilao.getLanceAtual() + ".");
+            txtQuantidadeLances = new JLabel("Quantidade lances: " + leilao.getQntLances() + ".");
             if (leilao.getStatusAberto()) {
-                status = new JLabel("Status: Aberto.");
+                txtStatus = new JLabel("Status: Aberto.");
             } else {
-                status = new JLabel("Status: Fechado.");
+                txtStatus = new JLabel("Status: Fechado.");
                 temp.setEnabled(false);
             }
             
@@ -119,8 +119,8 @@ public class TelaLotes extends JPanel {
                 int i = getI()-1;
                 
                 tela.setLote("Lote: " + String.format("%03d", getI()));
-                tela.setProduto(produto.getText());
-                tela.setLanceMinimo(lanceMinimo.getText());
+                tela.setProduto(txtProduto.getText());
+                tela.setLanceMinimo(txtLanceMinimo.getText());
                 tela.setVisible(true);
             }
         });
@@ -132,29 +132,29 @@ public class TelaLotes extends JPanel {
             l.setAutoCreateContainerGaps(true);
             l.setHorizontalGroup(l.createSequentialGroup()
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(produto)
-                            .addComponent(lanceMinimo)
-                            .addComponent(lanceAtual)
-                            .addComponent(qntLances)
-                            .addComponent(status)
+                            .addComponent(txtProduto)
+                            .addComponent(txtLanceMinimo)
+                            .addComponent(txtLanceAtual)
+                            .addComponent(txtQuantidadeLances)
+                            .addComponent(txtStatus)
                             .addComponent(botao.get(n-2)))
             );
 
             l.setVerticalGroup(l.createSequentialGroup()
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(produto)
+                            .addComponent(txtProduto)
                     )
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(lanceMinimo)
+                            .addComponent(txtLanceMinimo)
                     )
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(lanceAtual)
+                            .addComponent(txtLanceAtual)
                     )
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(qntLances)
+                            .addComponent(txtQuantidadeLances)
                     )
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(status)
+                            .addComponent(txtStatus)
                     )
                     .addGroup(l.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(botao.get(n-2))
