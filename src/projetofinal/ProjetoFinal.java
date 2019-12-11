@@ -12,7 +12,8 @@ public class ProjetoFinal {
         leilao.get(0).FinalizarLeilao();
         leilao.add(new Leilao("Carro", 1500.00, true));
         TelaLotes tela = new TelaLotes();
-        tela.display(leilao);
+        tela.display();
+        tela.criarLeilao(leilao);
         
     }
     

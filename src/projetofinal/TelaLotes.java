@@ -25,7 +25,9 @@ public class TelaLotes extends JPanel {
     private double lanceMinimo, lanceAtual;
     private int quantidadeLances, i, n = 1;
     private boolean status;
-    
+    JFrame f = new JFrame("Leilão IFTM");
+    JPanel panel = new JPanel();
+        
     public JButton getBotao() {
         return botao;
     }
@@ -206,23 +208,23 @@ public class TelaLotes extends JPanel {
 
         
     }
-
-    public void display(ArrayList<Leilao> leilao) {
-        JFrame f = new JFrame("Leilão IFTM");
-        JPanel panel = new JPanel();
+        
+    public void display() {
+        
         JScrollPane scrollPane = new JScrollPane(panel);
         f.setSize(300, 300);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        for (Leilao leilao1 : leilao) {
-            panel.add(new TelaLotes(leilao1, n));
-            n++;
-        }
         panel.add(Box.createVerticalGlue());
         f.getContentPane().add(scrollPane);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
-
+    
+    public void criarLeilao(ArrayList<Leilao> leilao){
+        for (Leilao leilao1 : leilao) {
+            panel.add(new TelaLotes(leilao1, n));
+            n++;
+        }
+    }
 }
