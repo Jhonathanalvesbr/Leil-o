@@ -11,7 +11,7 @@ public class Leilao {
     private boolean statusAberto;
     private Lance ganhadorLance;
     private NumberFormat formatar = new DecimalFormat("#,##0.00");     
-
+    
     public String format(double formatar){
         return this.formatar.format(formatar);
     }   

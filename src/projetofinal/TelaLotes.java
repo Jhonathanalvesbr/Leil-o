@@ -25,9 +25,7 @@ public class TelaLotes extends JPanel {
     private double lanceMinimo, lanceAtual;
     private int quantidadeLances, i, n = 1;
     private boolean status;
-    JFrame f = new JFrame("Leilão IFTM");
-    JPanel panel = new JPanel();
-        
+    
     public JButton getBotao() {
         return botao;
     }
@@ -208,7 +206,8 @@ public class TelaLotes extends JPanel {
 
         
     }
-        
+        JFrame f = new JFrame("Leilão IFTM");
+        JPanel panel = new JPanel();
     public void display() {
         
         JScrollPane scrollPane = new JScrollPane(panel);
