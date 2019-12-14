@@ -223,10 +223,22 @@ public class LanceTela extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextField2.getText().equals(""))
+        boolean ehNumero;
+        
+        try {
+	    double valor = (Double.parseDouble(jTextField1.getText()));
+            ehNumero = true;
+	} catch (NumberFormatException e) {	  
+            ehNumero = false;
+	}
+        if(jTextField2.getText().equals("") && jTextField1.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Os campos estão vazios!");
+        else if(jTextField2.getText().equals(""))
             JOptionPane.showMessageDialog(null, "Digite seu nome!");
         else if(jTextField1.getText().equals(""))
             JOptionPane.showMessageDialog(null, "Digite um lance!");
+        else if(!ehNumero)
+                JOptionPane.showMessageDialog(null, "O lance deve conter somente numeros!");
         else if(Double.parseDouble(jTextField1.getText()) < leilao.getLanceMinimo())
             JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o lance minimo.");
         else
