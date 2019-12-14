@@ -386,9 +386,9 @@ public class TelaAdm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     public void salvar() throws FileNotFoundException, IOException{
-        FileOutputStream file = new FileOutputStream("leilao.sis");
+        FileOutputStream file = new FileOutputStream("leilaoo.sis");
         ObjectOutputStream saida = new ObjectOutputStream(file);
-        System.out.println(telaLotes.getLeilao());
+        //System.out.println(telaLotes.getLeilao());
         saida.writeObject(telaLotes.getLeilao());
     }
     
