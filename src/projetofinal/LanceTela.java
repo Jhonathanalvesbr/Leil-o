@@ -181,7 +181,7 @@ public class LanceTela extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2});
@@ -224,10 +224,12 @@ public class LanceTela extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(jTextField2.getText().equals(""))
-        {
             JOptionPane.showMessageDialog(null, "Digite seu nome!");
-        }
-        else if(Double.parseDouble(jTextField1.getText()) > leilao.getLanceMinimo())
+        else if(jTextField1.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Digite um lance!");
+        else if(Double.parseDouble(jTextField1.getText()) < leilao.getLanceMinimo())
+            JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o lance minimo.");
+        else
         {
         Object[] options = { "Sim", "Não" }; 
         String oferta = "Deseja relamente ofertar " + leilao.format(Double.parseDouble(jTextField1.getText())) + " de lance?";
@@ -237,10 +239,12 @@ public class LanceTela extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, "Lance ofertado!");
               leilao.RegistrarLance(jTextField2.getText(), Double.parseDouble(jTextField1.getText()));
               telaLotes.setLanceAtual("Lance atual: " + leilao.format(Double.parseDouble(jTextField1.getText())));
+              telaLotes.setQuantidadeLances();
+          
           }
         }
-        else
-            JOptionPane.showMessageDialog(null, "O lance ofertado deve ser maior que o lance minimo.");
+        
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

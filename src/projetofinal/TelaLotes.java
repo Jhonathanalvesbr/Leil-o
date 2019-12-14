@@ -23,7 +23,39 @@ public class TelaLotes extends JPanel {
     private JScrollPane sp = new JScrollPane();
     private String nomeProduto;
     private double lanceMinimo, lanceAtual;
-    private int quantidadeLances, i, n = 1;
+
+    public int getZ() {
+        return z;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+
+    public JFrame getF() {
+        return f;
+    }
+
+    public void setF(JFrame f) {
+        this.f = f;
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+
+    public JScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public void setScrollPane(JScrollPane scrollPane) {
+        this.scrollPane = scrollPane;
+    }
+    private int quantidadeLances, i, n = 1, z = 0;
     private boolean status;
     
     public JButton getBotao() {
@@ -62,9 +94,7 @@ public class TelaLotes extends JPanel {
         return quantidadeLances;
     }
 
-    public void setQuantidadeLances(int quantidadeLances) {
-        this.quantidadeLances = quantidadeLances;
-    }
+    
 
     public boolean isStatus() {
         return Status;
@@ -135,9 +165,8 @@ public class TelaLotes extends JPanel {
         return i;
     }
 
-    public TelaLotes(Leilao leilao, int j) {
+    public TelaLotes(final Leilao leilao, int j) {
         i = j;
-        System.out.println(j);
         botao = new JButton("Entrar");
         nomeProduto = leilao.getNomeProduto();
         lanceMinimo = leilao.getLanceMinimo();
@@ -203,27 +232,55 @@ public class TelaLotes extends JPanel {
                         .addComponent(botao)
                 )
         );
-
-        
     }
         JFrame f = new JFrame("Leilão IFTM");
         JPanel panel = new JPanel();
-    public void display() {
-        
         JScrollPane scrollPane = new JScrollPane(panel);
+    public void display() {
         f.setSize(300, 300);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.add(Box.createVerticalGlue());
+        
+    }
+    ArrayList<Leilao> leilao;
+    public void criarLeilao(ArrayList<Leilao> leilao){
+        this.leilao = leilao;
+        int c = panel.getComponentCount();
+        
+        
+            panel.add(new TelaLotes(leilao.get(c), n));
+            n++;
+            z++;
+        
         f.getContentPane().add(scrollPane);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
-    public void criarLeilao(ArrayList<Leilao> leilao){
-        for (Leilao leilao1 : leilao) {
-            panel.add(new TelaLotes(leilao1, n));
-            n++;
-        }
+    
+    public void removeLelao(int i)
+    {
+        panel.remove(i);
+    }
+    
+    public void setStatusBotao(int i, boolean b){
+        
+        TelaLotes temp = (TelaLotes) panel.getComponent(i);
+       
+    }
+    
+    public void atualizar(int index, String nomeProduto, boolean status, double valor){
+        
+        TelaLotes temp = (TelaLotes) panel.getComponent(index);
+        System.out.println(nomeProduto);
+        temp.lblProduto.setText("Produto: " + nomeProduto + ".");
+        temp.lblLanceMinimo.setText("Lance minimo: R$: " + leilao.get(0).format(valor) + ".");
+        temp.botao.setEnabled(status);
+        
+        
+    }
+    
+    public void setQuantidadeLances() {
+        quantidadeLances++;
+        lblQuantidadeLances.setText(("Quantidade lances: " + quantidadeLances + "."));
     }
 }

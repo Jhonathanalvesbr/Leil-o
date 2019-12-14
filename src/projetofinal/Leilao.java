@@ -11,6 +11,15 @@ public class Leilao {
     private boolean statusAberto;
     private Lance ganhadorLance;
     private NumberFormat formatar = new DecimalFormat("#,##0.00");     
+    private int lote = 0;
+
+    public int getLote() {
+        return lote;
+    }
+
+    public void setLote(int lote) {
+        this.lote = lote;
+    }
     
     public String format(double formatar){
         return this.formatar.format(formatar);
@@ -19,7 +28,12 @@ public class Leilao {
     public String getNomeProduto() {
         return nomeProduto;
     }
-
+    
+    @Override public String toString() {
+        
+            return "Lote "+lote+": "+nomeProduto;
+    };
+    
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
@@ -56,15 +70,17 @@ public class Leilao {
         this.ganhadorLance = ganhadorLance;
     }
     
-    public Leilao(String nomeProduto, double valorMinimo, boolean statusAberto){
+    public Leilao(String nomeProduto, double valorMinimo, boolean statusAberto, int lote){
         this.nomeProduto = nomeProduto;
         this.lanceMinimo = valorMinimo;
         this.statusAberto = statusAberto;
         if(statusAberto = true)
             lance = new ArrayList<>();
+        this.lote = lote;
     }
     
     public void RegistrarLance(String nomeCliente, double valorLance){
+        
         if(valorLance > lanceMinimo)
             lance.add(new Lance(nomeCliente, valorLance));
     }
@@ -86,7 +102,7 @@ public class Leilao {
         return n;
     }
     
-    public void FinalizarLeilao(){
+    public void finalizarLeilao(){
         for (Lance lance1 : lance) {
             lance1.Lances();
             if(ganhadorLance == null)
