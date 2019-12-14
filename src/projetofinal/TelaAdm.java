@@ -92,7 +92,7 @@ public class TelaAdm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Lance minimo");
+        jLabel3.setText("Lance minimo:");
 
         jLabel4.setText("Status:");
 
@@ -390,6 +390,7 @@ public class TelaAdm extends javax.swing.JFrame {
         ObjectOutputStream saida = new ObjectOutputStream(file);
         //System.out.println(telaLotes.getLeilao());
         saida.writeObject(telaLotes.getLeilao());
+        saida.close();
     }
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
