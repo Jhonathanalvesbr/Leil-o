@@ -242,6 +242,14 @@ public class TelaLotes extends JPanel {
         
     }
     ArrayList<Leilao> leilao;
+
+    public ArrayList<Leilao> getLeilao() {
+        return leilao;
+    }
+
+    public void setLeilao(ArrayList<Leilao> leilao) {
+        this.leilao = leilao;
+    }
     public void criarLeilao(ArrayList<Leilao> leilao){
         this.leilao = leilao;
         int c = panel.getComponentCount();
